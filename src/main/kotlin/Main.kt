@@ -9,16 +9,22 @@ import java.time.format.DateTimeFormatter
 
 fun main(args: Array<String>) {
 
-    val serviceUser = UserRepository
+
+    //Se declara de que tipo es cada variable, pero se asigna ningun valor o instancia por el momento.
     var usuarioActual : User?
-    var newPurchase : Purchase
-    val purchaseRepo = PurchaseRepository
     var eventoActual : Event
+    var newPurchase : Purchase
+
+    val purchaseRepo = PurchaseRepository
+    val userRepo = UserRepository
     val eventoRepo = EventRepository
     val medalleroRepo = MedalTableRepository
+
+    //Se crea una instancia, y se asigna directamente a la variable
     val ticketProActual = TicketPro()
     val eliteActual = Elite()
     val ultimateActual = UltimateEvent()
+
 
 
     do {
@@ -28,7 +34,7 @@ fun main(args: Array<String>) {
         println("Ingrese su password: ")
         val password = readln() ?: ""
 
-        usuarioActual = serviceUser.login(nickname,password)
+        usuarioActual = userRepo.login(nickname,password)
 
         if (usuarioActual == null){
             println("Error: Contraseña o usuario equivocado")
